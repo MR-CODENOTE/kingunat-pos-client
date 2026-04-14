@@ -336,7 +336,7 @@ const POSPage = () => {
       </div>
 
       {/* Discount Modal */}
-      {isDiscountModalOpen && (state.discountPresets && discountPresets[0] && discountPresets[1]) && (
+      {isDiscountModalOpen && (discountPresets && discountPresets[0] && discountPresets[1]) && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-50 p-4 animate-fade-in" onClick={closeDiscountModal}>
           <div className="bg-white rounded-lg shadow-xl w-full max-w-sm p-6" onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-4 border-b pb-2">
