@@ -93,21 +93,20 @@ const AppContent = () => {
 };
 
 
-
 function App() {
   return (
     <ToastProvider>
       <ConfirmProvider>
         <PromptProvider>
-          {/* AuthProvider must be inside Toast/Confirm so it can use those hooks */}
-          <AuthProvider>
-            <Router>
+          {/* Router MUST wrap AuthProvider because AuthProvider uses useNavigate */}
+          <Router>
+            <AuthProvider>
               <AppContent />
               <ToastContainer />
               <ConfirmModal />
               <PromptModal />
-            </Router>
-          </AuthProvider>
+            </AuthProvider>
+          </Router>
         </PromptProvider>
       </ConfirmProvider>
     </ToastProvider>
