@@ -46,11 +46,12 @@ const OnlineOrdersPage = () => {
     }
   }, [toast]);
 
+  // --- 🚨 INFINITE LOOP FIX HERE 🚨 ---
   useEffect(() => {
     setCurrentRoute('Online Orders');
     fetchOrders();
     fetchProducts();
-  }, [setCurrentRoute, fetchOrders, fetchProducts]);
+  }, []); // <-- Empty array forces it to only run once!
 
   const filteredOrders = orders.filter(o => filterStatus === 'All' || o.status === filterStatus);
 

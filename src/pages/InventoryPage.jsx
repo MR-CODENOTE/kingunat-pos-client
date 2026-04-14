@@ -53,11 +53,12 @@ const InventoryPage = () => {
     }
   }, [toast, newProdCategory]);
 
+  // --- 🚨 INFINITE LOOP FIX HERE 🚨 ---
   useEffect(() => {
     setCurrentRoute('Inventory Management');
     fetchProducts();
     fetchCategories();
-  }, [setCurrentRoute, fetchProducts, fetchCategories]);
+  }, []); // <-- Empty array forces it to only run once!
 
   const filteredProducts = products.filter(p =>
     p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
