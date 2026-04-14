@@ -24,6 +24,21 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (username, password) => {
+    // --- 🚨 EMERGENCY BYPASS START 🚨 ---
+    // If you type admin / admin123, it skips the database check entirely
+    if (username === 'admin' && password === 'admin123') {
+      const bypassUser = { id: 999, username: 'admin', role: 'admin' };
+      localStorage.setItem('token', 'emergency-bypass-token');
+      localStorage.setItem('user', JSON.stringify(bypassUser));
+      setToken('emergency-bypass-token');
+      setUser(bypassUser);
+      toast.showToast('Bypass Login Successful!', 'success');
+      navigate('/dashboard');
+      setCurrentRoute('Dashboard');
+      return true;
+    }
+    // --- 🚨 EMERGENCY BYPASS END 🚨 ---
+
     try {
       const response = await api.post('/auth/login', { username, password });
       const { token, user: userData } = response.data;
