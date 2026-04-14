@@ -20,7 +20,7 @@ import PromptModal from './components/PromptModal';
 import { ToastProvider, useToast } from './context/ToastContext';
 import { ConfirmProvider, useConfirm } from './context/ConfirmContext';
 import { PromptProvider, usePrompt } from './context/PromptContext';
-import { AuthProvider } from './context/AuthContext';
+import AuthProvider from './context/AuthContext';
 
 
 const PrivateRoute = ({ children, roles }) => {
